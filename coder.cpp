@@ -8,10 +8,10 @@
 
 using namespace std;
 
-int indexForSymbol(char c, vector<pair<char, unsigned int>> arr){
+int indexForSymbol (char c, vector<pair<char, unsigned int>> arr){
     for (int i = 0; i < arr.size(); i++)
     {
-        if(c == arr[i].first){
+        if (c == arr[i].first){
             return i+2;
         }
     }
@@ -20,24 +20,24 @@ int indexForSymbol(char c, vector<pair<char, unsigned int>> arr){
     
 }
 
-void output_bit(unsigned int bit, unsigned int* bit_len, unsigned char* write_bit, FILE* output_file){
+void output_bit (unsigned int bit, unsigned int* bit_len, unsigned char* write_bit, FILE* output_file){
     (*write_bit) >>= 1;
-    if(bit) (*write_bit) |= 0x80;
+    if (bit) (*write_bit) |= 0x80;
     (*bit_len)--;
-    if((*bit_len) == 0){
-        fputc((*write_bit), output_file);
+    if ( (*bit_len) == 0 ){
+        fputc( (*write_bit), output_file );
         (*bit_len) = 8;
     }
 }
 
-void bitsPlusFollow(unsigned int bit, unsigned int* bits_to_follow, unsigned int* bit_len, unsigned char* write_bit, FILE* output_file){
+void bitsPlusFollow (unsigned int bit, unsigned int* bits_to_follow, unsigned int* bit_len, unsigned char* write_bit, FILE* output_file){
     output_bit(bit, bit_len, write_bit, output_file);
 
     for (; *bits_to_follow > 0; (*bits_to_follow)--){
         output_bit(!bit, bit_len, write_bit, output_file);
     }
 }
-double coder(const char* input_name="input.txt", const char* output_name="encoded.txt"){
+double coder (const char* input_name="input.txt", const char* output_name="encoded.txt"){
     unsigned int * alfabet = new unsigned int [256];
     for (int i=0; i<256; i++){
         alfabet[i] = 0;
@@ -52,7 +52,7 @@ double coder(const char* input_name="input.txt", const char* output_name="encode
     unsigned char character = 0;
     while (!feof(input_file)) { // Read from input file
        character = fgetc(input_file);
-       if(!feof(input_file)){
+       if (!feof(input_file)){
            coll_characters++;
            alfabet[character]++;
        }
@@ -61,8 +61,8 @@ double coder(const char* input_name="input.txt", const char* output_name="encode
     fclose(input_file);
 
     vector<pair<char, unsigned int>> arr;
-    for(int i=0; i<256; i++){
-        if(alfabet[i] != 0){
+    for (int i=0; i<256; i++){
+        if (alfabet[i] != 0){
             arr.push_back(make_pair((char)i, alfabet[i]));
         }
     }
@@ -89,7 +89,7 @@ double coder(const char* input_name="input.txt", const char* output_name="encode
         table[i+2] = b;
     }
 
-    if(table[arr.size()] > (1<<14 -1)){
+    if (table[arr.size()] > (1<<14 -1)){
         throw invalid_argument("Error, too long count.");
     }
     unsigned long long low_v = 0;
@@ -110,8 +110,8 @@ double coder(const char* input_name="input.txt", const char* output_name="encode
     char col_letters = arr.size();
     fputc(col_letters, output_file);
 
-    for(int i=0; i<256; i++){ // Writing the letters used and their number
-        if(alfabet[i] != 0){
+    for (int i=0; i<256; i++){ // Writing the letters used and their number
+        if (alfabet[i] != 0){
             fputc((char)i, output_file);
             fwrite(reinterpret_cast<const char*>(&alfabet[i]), sizeof(unsigned int), 1, output_file);
         }
@@ -122,7 +122,7 @@ double coder(const char* input_name="input.txt", const char* output_name="encode
 
         character = fgetc(input_file);
 
-        if(!feof(input_file)){
+        if (!feof(input_file)){
 
             j = indexForSymbol(character, arr);
             i++;
@@ -190,10 +190,10 @@ double coder(const char* input_name="input.txt", const char* output_name="encode
             }
             bits_to_follow+=1;
             
-            if(low_v < first_qtr){
+            if (low_v < first_qtr){
                 bitsPlusFollow(0, &bits_to_follow, &bit_len, &write_bit, output_file);
             }
-            else{
+            else {
                 bitsPlusFollow(1, &bits_to_follow, &bit_len, &write_bit, output_file);
             }
 
