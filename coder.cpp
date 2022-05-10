@@ -129,10 +129,7 @@ double coder(const char* input_name="input.txt", const char* output_name="encode
 
             high_v = low_v +  table[j] * diff / delitel - 1;
             low_v = low_v + table[j - 1] * diff  / delitel;
-            if (low_v > high_v)
-                {
-                    cout<<"Hehehe: "<<low_v<<" "<<high_v<<endl;
-                }
+
             for (;;){
                 
                 

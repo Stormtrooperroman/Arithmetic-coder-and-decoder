@@ -124,10 +124,7 @@ void decoder (const char* input_name="encoded.txt", const char* output_name="out
         for( j = 1; table[j] <= freq; j++);
         high_v = low_v +  table[j] * diff / delitel - 1;
         low_v = low_v + table[j - 1] * diff  / delitel;
-        if (high_v < low_v)
-        {
-            cout<<"HAHAHAHAHAHAH"<<endl;
-        }
+
         for (;;){
                  
             if (high_v < half){
