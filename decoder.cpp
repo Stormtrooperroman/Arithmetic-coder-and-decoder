@@ -8,11 +8,11 @@
 using namespace std;
 
 int input_bit (unsigned char* read_bit, unsigned int* bit_len, FILE* input_file, unsigned int* garbage_bit){
-    if((*bit_len) == 0){
+    if ( (*bit_len) == 0 ){
         (*read_bit) = fgetc(input_file); 
-        if(feof(input_file)){
+        if (feof(input_file)){
             (*garbage_bit)++;
-            if((*garbage_bit)>14){
+            if ( (*garbage_bit)>14 ){
                 throw invalid_argument("Can't decompress");
             }
             // return -1;
@@ -28,7 +28,7 @@ int input_bit (unsigned char* read_bit, unsigned int* bit_len, FILE* input_file,
 int indexForSymbol (char c, vector<pair<char, unsigned int>> arr){
     for (int i = 0; i < arr.size(); i++)
     {
-        if(c == arr[i].first){
+        if (c == arr[i].first){
             return i+1;
         }
     }
@@ -39,7 +39,7 @@ int indexForSymbol (char c, vector<pair<char, unsigned int>> arr){
 
 void decoder (const char* input_name="encoded.txt", const char* output_name="output.txt"){ // Decoding function
     unsigned int * alfabet = new unsigned int [256];
-    for(int i=0; i<256; i++){
+    for (int i=0; i<256; i++){
         alfabet[i] = 0;
     }
     FILE* input_file = fopen(input_name, "rb"); // Open input file
@@ -49,24 +49,24 @@ void decoder (const char* input_name="encoded.txt", const char* output_name="out
     unsigned char col = 0;
     unsigned int col_letters = 0;
     col = fgetc(input_file);
-    if(!feof(input_file)){
+    if (!feof(input_file)){
        col_letters =(unsigned int) col;
     }
 
     unsigned char character = 0;
-    for(int i = 0; i< col_letters; i++){ // Reading the letters used and their number
+    for (int i = 0; i< col_letters; i++){ // Reading the letters used and their number
         character = fgetc(input_file);
-        if(!feof(input_file)){
+        if (!feof(input_file)){
             fread(reinterpret_cast<char*>(&alfabet[character]), sizeof(unsigned int), 1, input_file);
         }
-        else{
+        else {
             throw invalid_argument("Can't decompress file.");
         }
     }
     unsigned long long coll_characters = 0;
     vector<pair<char, unsigned int>> arr;
-    for(int i=0; i<256; i++){
-        if(alfabet[i] != 0){
+    for (int i=0; i<256; i++){
+        if (alfabet[i] != 0){
             coll_characters += alfabet[i];
             arr.push_back(make_pair((char)i, alfabet[i]));
         }
@@ -108,7 +108,7 @@ void decoder (const char* input_name="encoded.txt", const char* output_name="out
     unsigned short value = 0;
     int k = 0;
 
-    for(int i = 1; i <= 16; i++){
+    for (int i = 1; i <= 16; i++){
         k = input_bit(&read_bit, &bit_len, input_file, &garbage_bit);
         value = 2 * value + k;
     }
@@ -121,7 +121,7 @@ void decoder (const char* input_name="encoded.txt", const char* output_name="out
         unsigned long long freq = (unsigned long long )((((unsigned long long )value - low_v + 1) * delitel - 1) / (diff));
         
         int j;
-        for( j = 1; table[j] <= freq; j++);
+        for ( j = 1; table[j] <= freq; j++);
         high_v = low_v +  table[j] * diff / delitel - 1;
         low_v = low_v + table[j - 1] * diff  / delitel;
 
@@ -154,7 +154,7 @@ void decoder (const char* input_name="encoded.txt", const char* output_name="out
 
         }
         
-        if(j==1){
+        if (j==1){
             break;
         }
 
@@ -168,7 +168,7 @@ void decoder (const char* input_name="encoded.txt", const char* output_name="out
 }
 
 
-unsigned int checker(const char* before_name="input.txt", const char* after_name="output.txt"){ // Checking for file matches 
+unsigned int checker (const char* before_name="input.txt", const char* after_name="output.txt"){ // Checking for file matches 
     unsigned int same = 0;
     FILE* before_file = fopen(before_name, "r");
     FILE* after_file = fopen(after_name, "r");
@@ -205,7 +205,7 @@ unsigned int checker(const char* before_name="input.txt", const char* after_name
     return same;
 }
 
-int main(){
+int main (){
     decoder();
     cout<<checker()<<endl;
 }
