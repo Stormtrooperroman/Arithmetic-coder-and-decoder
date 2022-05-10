@@ -1,0 +1,51 @@
+[2022-03-05 08:49:13.221477] [0x00000af8] (info) : Connect CEF app
+[2022-03-05 08:49:13.223475] [0x00000af8] (info) : 2021,11,22,64h
+[2022-03-05 08:49:13.224475] [0x00000af8] (info) : Memory 6.937 GB
+[2022-03-05 08:49:13.271912] [0x00000af8] (info) : Not enabling crash reporter for processid=15948
+[2022-03-05 08:49:13.931166] [0x000029d8] (info) : CameraManager: Media Foundation camera
+[2022-03-05 08:49:13.931166] [0x000029d8] (info) : CameraManager: Media Foundation camera
+[2022-03-05 08:49:14.042854] [0x000029d8] (info) : Not enabling crash reporter for processid=16004
+[2022-03-05 08:49:19.781924] [0x00002be0] (info) : CURLRequestClient::OnDownloadData http://class.tsu.ru/api/xml?action=common-info Got Data len=1019
+[2022-03-05 08:49:19.782925] [0x00002be0] (info) : CURLRequestClient::OnRequestComplete http://class.tsu.ru/api/xml?action=common-info error=0
+[2022-03-05 08:49:19.901421] [0x00002be0] (info) : CURLRequestClient::OnDownloadData http://class.tsu.ru/m-course-5446?mode=xml Got Data len=29247
+[2022-03-05 08:49:19.902421] [0x00002be0] (info) : CURLRequestClient::OnDownloadData http://class.tsu.ru/m-course-5446?mode=xml Got Data len=14621
+[2022-03-05 08:49:19.902421] [0x00002be0] (info) : CURLRequestClient::OnRequestComplete http://class.tsu.ru/m-course-5446?mode=xml error=0
+[2022-03-05 08:49:20.465375] [0x000029d8] (info) : CameraManager: Media Foundation camera
+[2022-03-05 08:49:20.687028] [0x000029d8] (info) : CameraManager: Media Foundation camera
+[2022-03-05 08:49:21.002470] [0x000029d8] (info) : Not enabling crash reporter for processid=19112
+[2022-03-05 08:49:21.409305] [0x000029d8] (info) : CameraManager: Media Foundation camera
+[2022-03-05 08:49:38.966902] [0x00000af8] (info) : JS : (meetingLaunchIA.js?ver=11.2.2:163) : https://class.tsu.ru
+[2022-03-05 08:49:38.967903] [0x00000af8] (info) : JS : (meetingLaunchIA.js?ver=11.2.2:202) : htmlLaunchOptionsPage
+[2022-03-05 08:49:39.592967] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : ConnectAppWrapper : Setting connection type as RTMP
+[2022-03-05 08:49:39.602970] [0x00000af8] (warning) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : The "subtle" variant of Link is deprecated. Please use variant="quiet" instead.
+[2022-03-05 08:49:39.651971] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : MeetingViewModel : onLocalizationComplete : time to call mainMeetingModule connect
+[2022-03-05 08:49:39.652971] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : MeetingServerConnectorRTMP : CONNECTIONLOG*************startProtosConnect
+[2022-03-05 08:49:39.652971] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : MeetingServerConnectorRTMP : CONNECTIONLOG*************removeTimeOuts*******
+[2022-03-05 08:49:39.653971] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : MeetingServerConnectorRTMP : CONNECTIONLOG*************** connect --->[attempt 1 of 60] Connecting to 0/0: rtmps://rtmp-class3.ido.tsu.ru:443/?rtmp://ac-class2:8506/meetingas3app/7/1716131/
+[2022-03-05 08:49:39.687975] [0x000029d8] (info) : Creating RTMP Connectionnhandler
+[2022-03-05 08:49:39.688041] [0x000029d8] (info) : CRtmpConnectionHandler::getHostNameAndPort fetching hostname and port 
+[2022-03-05 08:49:39.688041] [0x000029d8] (info) : CRtmpConnectionHandler::getHostNameAndPort fetching hostname and port done 
+[2022-03-05 08:49:39.688041] [0x000029d8] (info) : CRtmpConnectionHandler::connect identifying  host rtmp-class3.ido.tsu.ru and port: 443 
+[2022-03-05 08:49:39.688041] [0x000029d8] (error) : No proxy found for this url. Error code : 12180.
+[2022-03-05 08:49:39.688041] [0x000029d8] (info) : CRtmpConnectionHandler::connect RTMP Connecting to rtmps://rtmp-class3.ido.tsu.ru:443/?rtmp://ac-class2:8506/meetingas3app/7/1716131/ with  pacProxyFlag: false 
+[2022-03-05 08:49:39.688041] [0x000029d8] (warning) : RTMP Log, D:\Adobe\workspace\ConnectCefApp_Master\Extern\Adobe\rtmp_sdk\RTMP\source\fmpnetworkio\source\win\connectionio.cpp:130 :: [ConnectionIO]: Direct connection
+[2022-03-05 08:49:39.937819] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : MeetingServerConnectorRTMP : CONNECTIONLOG*************ncOnStatus NetConnection.Connect.Success
+[2022-03-05 08:49:39.937819] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : MeetingServerConnectorRTMP : CONNECTIONLOG************* ncIndex = 0
+[2022-03-05 08:49:39.937819] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : MeetingServerConnectorRTMP : CONNECTIONLOG*************removeTimeOuts*******
+[2022-03-05 08:49:39.937819] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : MeetingServerConnectorRTMP : CONNECTIONLOG*************** Got NetConnection.Connect.Success : setUpMainNC
+[2022-03-05 08:49:39.937819] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : MeetingServerConnectorRTMP : CONNECTIONLOG***************setUpMainNetConnectionSink 
+[2022-03-05 08:49:39.937819] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : MeetingServerConnectorRTMP : CONNECTIONLOG*************** Successful Connection URI rtmps://rtmp-class3.ido.tsu.ru:443/?rtmp://ac-class2:8506/meetingas3app/7/1716131/
+[2022-03-05 08:49:40.015964] [0x000029d8] (info) : CRtmpConnectionHandler::onStatus conn=rtmps://rtmp-class3.ido.tsu.ru:443/?rtmp://ac-class2:8506/meetingas3app/7/1716131/ code="NetConnection.Connect.Success", type="status", description="Connection succeeded.", details="FMS/5,0,16,5016"
+[2022-03-05 08:49:40.015964] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : MeetingServerConnectorRTMP : CONNECTIONLOG***************loginHandler 
+[2022-03-05 08:49:40.015964] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : MeetingServerConnectorRTMP : CONNECTIONLOG*************Successfully got into the room...
+[2022-03-05 08:49:40.031593] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : className?? : streamId=cameraVoip_0
+[2022-03-05 08:49:40.031593] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : className?? : onStreamChanged streamId=cameraVoip_0
+[2022-03-05 08:49:40.031593] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : className?? : streamId=screenshare_1
+[2022-03-05 08:49:40.031593] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : className?? : onStreamChanged streamId=screenshare_1
+[2022-03-05 08:49:40.094113] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : ConnectAudioManager : ConnectAudioMgr blockNotifications() false
+[2022-03-05 08:49:40.094113] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : ConnectAudioManager : ConnectAudioMgr spoolEvent() BlockNotifications
+[2022-03-05 08:49:40.109744] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : ConnectVideoManager : ConnectVideoManager updateVideoUI() Triggering UI updates - heavy operation
+[2022-03-05 08:49:40.142853] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : className?? : AudioVideoStreamHandler setCreated() mediaType : audio
+[2022-03-05 08:49:40.142853] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : className?? : uid->17. Active FMS Server is Default
+[2022-03-05 08:49:40.145854] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : VoipAudioManager : VoipAudioManager onVoipUserAddedOrUpdated() Voip User Added 2
+[2022-03-05 08:49:40.145854] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : VoipAudioManager : VoipAudioManager onVoipUserAddedOrUpdated() Voip User Added 2
