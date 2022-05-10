@@ -45,3 +45,7 @@
 [2022-03-05 08:49:40.094113] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : ConnectAudioManager : ConnectAudioMgr blockNotifications() false
 [2022-03-05 08:49:40.094113] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : ConnectAudioManager : ConnectAudioMgr spoolEvent() BlockNotifications
 [2022-03-05 08:49:40.109744] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : ConnectVideoManager : ConnectVideoManager updateVideoUI() Triggering UI updates - heavy operation
+[2022-03-05 08:49:40.142853] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : className?? : AudioVideoStreamHandler setCreated() mediaType : audio
+[2022-03-05 08:49:40.142853] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : className?? : uid->17. Active FMS Server is Default
+[2022-03-05 08:49:40.145854] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : VoipAudioManager : VoipAudioManager onVoipUserAddedOrUpdated() Voip User Added 2
+[2022-03-05 08:49:40.145854] [0x00000af8] (info) : JS : (index.69ac666b28da1d234c9c.js?81c167b2d4c9877e2a7c:1) : VoipAudioManager : VoipAudioManager onVoipUserAddedOrUpdated() Voip User Added 2
