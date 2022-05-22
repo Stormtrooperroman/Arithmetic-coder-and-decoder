@@ -5,7 +5,10 @@
 #include <algorithm>
 #include <stdexcept>
 
+// Number of bits in a code value
+#define code_value_bits 16
 
+// Input a bit
 int input_bit(unsigned char* read_bit, unsigned int* bit_len,
                 FILE* input_file, unsigned int* garbage_bit) {
     if ( (*bit_len) == 0 ) {
@@ -24,9 +27,9 @@ int input_bit(unsigned char* read_bit, unsigned int* bit_len,
     return t;
 }
 
-
+// Decoding function
 void decoder(const char* input_name = "encoded.txt",
-                const char* output_name = "output.txt") {  // Decoding function
+                const char* output_name = "output.txt") {
     unsigned int * alfabet = new unsigned int[256];
     for (int i = 0; i < 256; i++) {
         alfabet[i] = 0;
@@ -43,12 +46,13 @@ void decoder(const char* input_name = "encoded.txt",
     }
 
     unsigned char character = 0;
+
     // Reading the letters used and their number
     for (int i = 0; i < col_letters; i++) {
         character = fgetc(input_file);
         if (!feof(input_file)) {
             fread(reinterpret_cast<char*>(&alfabet[character]),
-                    sizeof(unsigned int), 1, input_file);
+                    sizeof(uint16_t), 1, input_file);
         } else {
             throw std::invalid_argument("Can't decompress file.");
         }
@@ -82,8 +86,13 @@ void decoder(const char* input_name = "encoded.txt",
         table[i+2] = b;
     }
 
+    if (table[arr.size()] > (1 << ((code_value_bits - 2)) - 1)) {
+        throw std::invalid_argument("Error, too long count.");
+    }
+
     unsigned int low_v = 0;
-    unsigned int high_v = ((static_cast<unsigned int>(1) << 16) - 1);
+    unsigned int high_v = ((static_cast<unsigned int>(1)
+                                    << code_value_bits) - 1);
     unsigned int delitel = table[arr.size()+1];
     unsigned int first_qtr = (high_v + 1) / 4;
     unsigned int half = first_qtr * 2;
@@ -95,18 +104,21 @@ void decoder(const char* input_name = "encoded.txt",
     uint16_t value = 0;
     int k = 0;
 
+    // Input bits to fill the code value
     for (int i = 1; i <= 16; i++) {
         k = input_bit(&read_bit, &bit_len, input_file, &garbage_bit);
         value = 2 * value + k;
     }
     unsigned int diff = high_v - low_v + 1;
     for (;;) {  // Read from input file
-        unsigned int freq = static_cast<unsigned int>(((
-            static_cast<unsigned int>(value) - low_v + 1)   * delitel - 1)
-                                    / (diff));
+        unsigned int freq = static_cast<unsigned int>((
+                                (static_cast<unsigned int>(value) - low_v + 1)
+                                    * delitel - 1) / diff);
 
         int j;
-        for ( j = 1; table[j] <= freq; j++) {}
+
+        // Find symbol
+        for (j = 1; table[j] <= freq; j++) {}
         high_v = low_v +  table[j] * diff / delitel - 1;
         low_v = low_v + table[j - 1] * diff  / delitel;
 
@@ -136,6 +148,7 @@ void decoder(const char* input_name = "encoded.txt",
             break;
         }
 
+        // Write this character
         fputc(arr[j-2].first, output_file);
         diff = high_v - low_v + 1;
     }

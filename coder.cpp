@@ -6,7 +6,10 @@
 #include <algorithm>
 #include <stdexcept>
 
+// Number of bits in a code value
+#define code_value_bits 16
 
+// Get the index of a symbol
 int indexForSymbol(char c, std::vector<std::pair<char, unsigned int>> arr) {
     for (int i = 0; i < arr.size(); i++) {
         if (c == arr[i].first) {
@@ -16,7 +19,7 @@ int indexForSymbol(char c, std::vector<std::pair<char, unsigned int>> arr) {
 
     return -1;
 }
-
+// Writing a bit to a file
 void output_bit(unsigned int bit, unsigned int* bit_len,
                 unsigned char* write_bit, FILE* output_file) {
     (*write_bit) >>= 1;
@@ -28,6 +31,7 @@ void output_bit(unsigned int bit, unsigned int* bit_len,
     }
 }
 
+// Write a sequence of bits to a file
 void bitsPlusFollow(unsigned int bit, unsigned int* bits_to_follow,
                     unsigned int* bit_len, unsigned char* write_bit,
                     FILE* output_file) {
@@ -38,9 +42,10 @@ void bitsPlusFollow(unsigned int bit, unsigned int* bits_to_follow,
     }
 }
 
+// Coding function
 double coder(const char* input_name = "input.txt",
                 const char* output_name = "encoded.txt") {
-    unsigned int * alfabet = new unsigned int[256];
+    uint16_t * alfabet = new uint16_t[256];
     for (int i = 0; i < 256; i++) {
         alfabet[i] = 0;
     }
@@ -90,12 +95,13 @@ double coder(const char* input_name = "input.txt",
         table[i+2] = b;
     }
 
-    if (table[arr.size()] > (1<<14 -1)) {
+    if (table[arr.size()] > (1 << ((code_value_bits - 2)) - 1)) {
         throw std::invalid_argument("Error, too long count.");
     }
 
     unsigned int low_v = 0;
-    unsigned int high_v = ((static_cast<unsigned int>(1) << 16) - 1);
+    unsigned int high_v = ((static_cast<unsigned int>(1)
+                                    << code_value_bits) - 1);
 
     unsigned int delitel = table[arr.size()+1];
     unsigned int diff = high_v - low_v + 1;
@@ -120,7 +126,7 @@ double coder(const char* input_name = "input.txt",
         if (alfabet[i] != 0) {
             fputc(static_cast<char>(i), output_file);
             fwrite(reinterpret_cast<const char*>(&alfabet[i]),
-                    sizeof(unsigned int), 1, output_file);
+                    sizeof(uint16_t), 1, output_file);
         }
     }
 
@@ -131,10 +137,11 @@ double coder(const char* input_name = "input.txt",
         if (!feof(input_file)) {
             j = indexForSymbol(character, arr);
 
+            // Narrow the code region to that allotted  to this symbol
             high_v = low_v +  table[j] * diff / delitel - 1;
             low_v = low_v + table[j - 1] * diff  / delitel;
 
-            for (;;) {
+            for (;;) {  // Loop to output bits
                 if (high_v < half) {
                     bitsPlusFollow(0, &bits_to_follow,
                                     &bit_len, &write_bit, output_file);
@@ -154,7 +161,7 @@ double coder(const char* input_name = "input.txt",
                 low_v += low_v;
                 high_v += high_v + 1;
             }
-        } else {
+        } else {  // encode the EOF symbol
             high_v = low_v +  table[1] * diff / delitel - 1;
             low_v = low_v + table[0] * diff  / delitel;
 
@@ -202,6 +209,7 @@ double coder(const char* input_name = "input.txt",
     unsigned int commpres_size = 0;
     struct stat sb{};
     struct stat se{};
+
     // Finding compression ratio
     if (!stat(input_name, &sb)) {
         file_full_size = sb.st_size;
@@ -213,6 +221,7 @@ double coder(const char* input_name = "input.txt",
     } else {
         perror("stat");
     }
+
     return (commpres_size + 0.0 ) / file_full_size;
 }
 
